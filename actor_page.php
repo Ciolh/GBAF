@@ -16,24 +16,19 @@
     
     <!--Corps de page-->
 
-<?php include ('includes/connection.php') ?>
-    <section class="actor_1">Acteur</section>
-        <div class="presentation_actor_page">Présentation</div>
+<?php include ('includes/login.php') ?>
 
-        <?php
-        
-            $pdo =  new PDO($connection->password)
-        ?>
+<?php 
+    $sqlquery = 'SELECT * FROM actors';
+    $actorsStatement = $mysqlConnection->prepare($sqlQuery);
+    $actorsStatement ->execute();
+    $actors = $actorsStatement->fetch();
 
-    <form method="post" action="variables.php">
-        <div class="commentary">
-            <label for="commentary" class="form-label">Commentaire</label>
-            <input type="commentary" class="form-control" id="commentary" name="commentary" aria-describedby="commentary-help">
-            <div id="commentary-help" class="form-text">Veuillez laisser votre commentaire ci-dessus</div>
+    echo 'logo';
+    echo 'actor';
+    echo 'description';
 
-        </div>
-            <button type="submit" class="btn btn-primary">Envoyer</button>
-    </form>
+?>
 
     <!-- Pied de page -->
  
