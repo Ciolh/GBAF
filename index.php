@@ -8,23 +8,27 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
+    
+    <!--Tête de page -->
+    <?php include_once ('includes/header.php'); ?>
     
     <!--Log DB -->
     <?php
 
-    try
-    {
-	    $db = new PDO('mysql:host=localhost;dbname=oc_gbaf;charset=utf8', 'root', 'root');
-    }
-    catch (Exception $e)
-    {
-        die('Erreur : ' . $e->getMessage());
-    }
+        try
+        {
+            $db = new PDO('mysql:host=localhost;dbname=oc_gbaf;charset=utf8', 'root', 'root');
+        }
+        catch (Exception $e)
+        {
+            die('Erreur : ' . $e->getMessage());
+        }
     ?>
 
-    <!--Tête de page -->
-    <?php include ('includes/header.php'); ?>
+    <!-- connexion -->
+
+    <?php include_once('login.php'); ?>
     
     <!--Corps de page-->
 
@@ -57,7 +61,6 @@
     <?php $mysqlConnection = new PDO('mysql:host=localhost;dbname=oc_gbaf;charset=utf8', 'root', 'root'); ?>
 
     <?php
-        
         $sqlQuery = 'SELECT * FROM actors';
         $actorsStatement = $mysqlConnection->prepare($sqlQuery);
         $actorsStatement->execute();
@@ -77,8 +80,23 @@
     
     <!-- Pied de page -->
  
-    <?php include ('includes/footer.php'); ?>
+    <?php include_once ('includes/footer.php'); ?>
     
 </body>
 
 </html>
+
+<!-- Envoyer l'id de l'acteur séléctionner à la page actor_page
+     Comment envoyer un parametre d'une page a une autre ?
+        1/ Formulaire 
+        2/ Directeument dans l'url  
+        
+    Dans la page actor_php
+        1/ Tu récupères l'id renvoyé par la formulaire
+        2/ Tu récupères les informations de la base de donnée à partir de l'id (select * from actors where $POST['id'] = actors.id)
+        3/ Tu affiches les infos 
+        4/ 
+
+-->
+
+
