@@ -10,17 +10,17 @@ catch (Exception $e)
 ?>
 
 <?php
-        
-        echo($_POST['name']);
 
-        $sqlQuery = 'INSERT INTO users(nom, prenom, username, password, reponse) VALUES (:nom, :prenom, :username, :password, :reponse)';
+        $sqlQuery = 'UPDATE users SET nom= :nom, prenom= :prenom, username= :username, password= :password, question= :question, reponse= :reponse WHERE id_user= :id_user';
         $insertUsersStatement = $mysqlConnection->prepare($sqlQuery);
         $insertUsersStatement ->execute([
-                'nom' => $_POST['name'],
-                'prenom' => $_POST['fullname'],
+                'id_user' => $_POST['id'],
+                'nom' => $_POST['nom'],
+                'prenom' => $_POST['prenom'],
                 'username' => $_POST['username'],
                 'password' => $_POST['password'],
-                'reponse' => $_POST['password'],
+                'question' => $_POST['question'],
+                'reponse' => $_POST['reponse'],
 ])
 ?>
 
@@ -36,8 +36,13 @@ catch (Exception $e)
 
 <body>
 
-<h1>Vous vous êtes enregistré avec succès !</h1>
+<h1>Vous avez modifier vos informations avec succès !</h1>
 <button type="submit" class="btn btn-primary"><a href="../index.php">Retour</a></button>
+
+
+
+
+
 
 </body>
 </html>

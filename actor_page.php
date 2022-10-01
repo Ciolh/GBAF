@@ -15,20 +15,16 @@
     <?php include ('includes/header.php'); ?>
     
     <!--Corps de page-->
+<?php include_once ('includes/functions.php'); ?>
 
-<?php include ('includes/login.php') ?>
 
 <?php 
-    $sqlquery = 'SELECT * FROM actors';
-    $actorsStatement = $mysqlConnection->prepare($sqlQuery);
-    $actorsStatement ->execute();
-    $actors = $actorsStatement->fetch();
+    $actor =get_actor($_GET['id']);
+      ?>  
+            <img src=' <?php echo $actor['logo']; ?>' />
+            <?php echo $actor['actor'];
+            echo $actor['description']; ?>
 
-    echo 'logo';
-    echo 'actor';
-    echo 'description';
-
-?>
 
     <!-- Pied de page -->
  

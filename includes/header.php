@@ -1,32 +1,39 @@
 
-<header>
-    
-    <ul class="flex-container">
-        <li class="flex-item"><img src='images\Logo.png'></li>
-        <li class="flex-item">
+<header class="flex-container">
+
+        <div class="image-logo"><img src='images\Logo.png'></div>
+        <div class="header-user">
             
             <section class="actors_presentation">
-
-                <?php $mysqlConnection = new PDO('mysql:host=localhost;dbname=oc_gbaf;charset=utf8', 'root', 'root'); ?>
+            
+            <?php
+            try
+            {
+            $mysqlConnection = new PDO('mysql:host=localhost;dbname=oc_gbaf;charset=utf8', 'root', 'root');
+            }
+            catch (Exception $e)
+            {
+            die('Erreur : ' . $e->getMessage());
+            }
+        ?>
 
                 <?php
         
-                    $sqlQuery = 'SELECT * FROM users';
-                    $usersStatement = $mysqlConnection->prepare($sqlQuery);
-                    $usersStatement->execute();
-                    $users = $usersStatement->fetch();
+        $sqlQuery = 'SELECT * FROM users';
+        $usersStatement = $mysqlConnection->prepare($sqlQuery);
+        $usersStatement->execute();
+        $users = $usersStatement->fetchAll();
 
                     foreach ($users as $user) : ?>
 
-                <?php if (isset($loggedUser)) : ?>
+                <?php if (isset($user)) : ?>
                 
-                    <img src= <?php echo $user['picture'] ; ?>>
-                    <button><?php echo $user['username']; ?></button>
+                    <?php echo $user['prenom'] ; ?>
+                    <?php echo $user['nom']; ?>
 
                 <?php endif; ?>
                 <?php endforeach ?>
             </section>
-        </li>
-    </ul>
+        </div>
         
 </header>

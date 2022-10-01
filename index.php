@@ -15,10 +15,9 @@
     
     <!--Log DB -->
     <?php
-
         try
         {
-            $db = new PDO('mysql:host=localhost;dbname=oc_gbaf;charset=utf8', 'root', 'root');
+            $mysqlConnection = new PDO('mysql:host=localhost;dbname=oc_gbaf;charset=utf8', 'root', 'root');
         }
         catch (Exception $e)
         {
@@ -57,9 +56,7 @@
     <!-- Présenttion des acteurs -->
     
     <section class="actors_presentation">
-
-    <?php $mysqlConnection = new PDO('mysql:host=localhost;dbname=oc_gbaf;charset=utf8', 'root', 'root'); ?>
-
+            <h1>Présentation des acteurs</h1>
     <?php
         $sqlQuery = 'SELECT * FROM actors';
         $actorsStatement = $mysqlConnection->prepare($sqlQuery);
@@ -68,9 +65,10 @@
     
         foreach ($actors as $actor) {
     ?>
-            <img src= <?php echo $actor['logo'] ; ?>>
+            <img src='<?php echo $actor['logo'] ; ?>'>
             <p><?php echo $actor['actor']; ?></p>
             <p><?php echo $actor['description'] ; ?></p>
+            <button type="submit" class="btn btn-primary"><a href="actor_page.php?id=<?php echo $actor['id_actor']; ?>">En savoir plus</a></button>
         
         <?php
         }
@@ -85,18 +83,3 @@
 </body>
 
 </html>
-
-<!-- Envoyer l'id de l'acteur séléctionner à la page actor_page
-     Comment envoyer un parametre d'une page a une autre ?
-        1/ Formulaire 
-        2/ Directeument dans l'url  
-        
-    Dans la page actor_php
-        1/ Tu récupères l'id renvoyé par la formulaire
-        2/ Tu récupères les informations de la base de donnée à partir de l'id (select * from actors where $POST['id'] = actors.id)
-        3/ Tu affiches les infos 
-        4/ 
-
--->
-
-
