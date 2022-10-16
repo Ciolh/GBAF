@@ -1,14 +1,25 @@
 header{
-    background: rgb(192, 192, 192);
+    border-bottom: 1px solid #d7d7d7;
+}
+
+.image-logo img{
+    padding:20px;
+    max-width: 75px;
 }
 
 .flex-container {
-    display: flex;   
+    display: flex;
     padding: 0;
     margin: 0;
     list-style: none;
-
+    align-items: center;
 }
+
+.header-user{
+    margin-right: 0;
+    margin-left: auto;
+}
+
 .flex-item{
     padding: 5px;
     width: 200px;
@@ -23,14 +34,75 @@ header{
 }
 
 .presentation{
-    background: teal;
+    background: #52c7c7;
     text-align: center;
+    padding: 40px;
+    margin-bottom: 20px;
 }
 
 .actors_presentation{
+    padding: 40px;
+    background: #cbcbcb;
+}
 
-    background: grey;
+.actor_presentation img{
+    max-width: 350px;
+    max-height: 100px;
+    margin-right: 40px;
+}
+
+.actor_presentation .img-container{
+    min-width: 400px;
+}
+
+.actor_presentation{
+    margin: 40px 0;
+    display: flex;
+}
+
+.actor_presentation h2{
+    margin-top:0;
+}
+
+.actor_page_presentation {
+    padding: 40px;
+    background: #cbcbcb;
     text-align: center;
+}
+
+.actor_page_presentation .img-actor {
+    margin-right: 40px;
+    
+}
+
+.form-login{
+    max-width: 400px;
+    padding: 20px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.form-login label{
+    padding: 10px;
+    display: inline-block;
+}
+
+.form-login button{
+    margin-top: 20px;
+}
+
+.btn-primary{
+    background: #52c7c7;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding:5px 10px;
+    cursor: pointer;
+}
+
+.btn-primary a{
+    color: white;
+    text-decoration: none;
 }
 
 footer{
@@ -41,5 +113,52 @@ footer{
 .inscription {
     background: teal;
     text-align: center;
+
+}
+
+.comments-title {
+    text-align: center;
+}
+
+.comments {
+    background:#e9e9e9;
+    text-align: center;
+    width: 20%;
+    border: 2px black solid;
+    border-right: 2px black solid;
+    border-left: 2px black solid;
+}
+
+.comments_form {
+    background: grey;
+    text-align: center;
+    padding: 20px;
+}
+
+
+.vote-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.vote-like button{
+    background-color: green;
+    margin: 2px;
+}
+
+.vote-dislike button{
+    background-color: red;
+    margin: 2px;
+}
+
+.form-setup {
+    max-width: 400px;
+    padding: 20px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.form-parametre button{
+    margin-top: 20px;
 
 }

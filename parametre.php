@@ -9,21 +9,26 @@
 </head>
 
 
-         <!--Tête de page -->
-         <?php include_once ('includes/header.php'); ?>
+     <!--Tête de page -->
+     <?php include_once ('includes/header.php'); ?>
 
     <!-- Formulaire Ajout Form avec method Post -->
 <body>
+
     <div class= "flex-container">
 
         <?php include_once('includes/functions.php'); ?>
-    
+
         <?php $user= get_user($_GET['id']); ?>
 
-        <!-- Formulaire d'inscription-->
-            <h1>Modifiez vos informations</h1><br />
+        <!-- Formulaire de modification-->
+        
+    <div class= "form-parametre">
+
+    <h1>Modifiez vos informations</h1><br />
+
         <form method="post" action ="includes/post_edit_user.php">
-            
+
             <!-- Champ cachés -->
             <input type="hidden" class="form-control" id="id" name="id" value="<?php echo $_GET['id']; ?>">
             <input type="hidden" class="form-control" id="question" name="question" value="<?php echo $user['question']; ?>">
@@ -55,6 +60,7 @@
             </div>
             <button type="submit" class="btn btn-primary">Appliquer les modifications</button>
         </form>
+        </div>
     </div>
         <!-- Pied de page -->
         <?php include_once ('includes/footer.php'); ?>

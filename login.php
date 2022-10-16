@@ -1,59 +1,51 @@
 <?php
-try
-{
-	$mysqlConnection = new PDO('mysql:host=localhost;dbname=oc_gbaf;charset=utf8', 'root', 'root');
-}
-catch (Exception $e)
-{
-        die('Erreur : ' . $e->getMessage());
-}
-// Validation du formulaire
-if (isset($_POST['username']) &&  isset($_POST['password'])) {
 
-    $sqlQuery = 'SELECT * FROM users WHERE username = :username AND password = :password';
+$postData = $_POST;
 
-$showUser = $mysqlConnection->prepare($sqlQuery);
-$userExecute = $showUser->execute([
-    'username' => $_POST['username'],
-    'password' => $_POST['password'],
-]);
+// Si le cookie ou la session sont présentes
+if(!empty($_GET["action"]) && $_GET["action"] === "unlog"){
+    unset($_COOKIE['LOGGED_USER']);
+    setcookie("LOGGED_USER", "", time() -3600);
+    session_destroy();
+    $loggedUser = false;
+}else{
 
-$user = $showUser->fetch();
+  if (isset($postData)) {
+    if (isset($postData['username']) &&  isset($postData['password'])) {
 
-    echo ($user['nom'].'<br />'.$user['prenom']);
-}
+            $loggedUser = get_logged_user(
+                    $postData['username'],
+                    $postData['password']
+            );
+
+           if(!$loggedUser){
+                $errorMessage = sprintf('Les informations envoyées ne permettent pas de vous identifier : (%s/%s)',
+                    $postData['username'],
+                    $postData['password']
+                );
+           }
+
+           else{
+
+              /**
+               * Cookie
+               */
+
+              setcookie(
+                  'LOGGED_USER',
+                  $loggedUser['id_user'],
+                  [
+                      'expires' => time() + 365*24*3600,
+                      'secure' => true,
+                      'httponly' => true,
+                  ]
+              );
+
+              $_SESSION['LOGGED_USER'] = $loggedUser['id_user'];
+            }
+        }
+    }
+
+  }
+
 ?>
-
-<!-- Affichage formulaire si non identifié -->
-<?php if(!isset($user)): ?>
-<form action="index.php" method="post">
-
-    <!-- En cas d'erreur -->
-    
-    <?php if(isset($errorMessage)) : ?>
-        <div class="Error" role="alert">
-            <?php echo $errorMessage; ?>
-        </div>
-    <?php endif; ?>
-    
-    <div class="mb-3">
-        <label for="username" class="form-label">Username</label>
-        <input type="text" class="form-control" id="username" name="username" aria-describedby="username-help" placeholder="Identifiant">
-    </div>
-    <div class="mb-3">
-        <label for="password" class="form-label">Mot de passe</label>
-        <input type="password" class="form-control" id="password" name="password">
-    </div>
-    <button type="submit" class="btn btn-primary">Se connecter</button>
-    <button type="submit" class="btn btn-primary"><a href=inscription.php>Créer un compte</a></button>
-
-</form>
-
-<!-- Si bien identifié -->
-
-<?php else: ?>
-    <div class="alert alert-success" role="alert">
-        Bonjour <?php echo $user['nom'].$user['prenom'] ; ?> et bienvenue sur le site !
-    </div>
-    <button type="submit" class="btn btn-primary"><a href=parametre.php?id=<?php echo $user['id_user']; ?>>Paramètres</a></button>
-<?php endif; ?>

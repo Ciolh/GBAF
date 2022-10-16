@@ -9,26 +9,41 @@
 </head>
 
 <body>
-    
+
+    <?php
+
+    include_once ('./config/mysql.php');
+    include_once ('./includes/functions.php');
+    include_once ('./config/user.php');
+
+    ?>
+
     <!--Tête de page -->
-
-    <?php include ('includes/header.php'); ?>
-    
-    <!--Corps de page-->
-<?php include_once ('includes/functions.php'); ?>
+    <?php include_once ('./includes/header.php'); ?>
 
 
-<?php 
+    <?php
     $actor =get_actor($_GET['id']);
-      ?>  
-            <img src=' <?php echo $actor['logo']; ?>' />
-            <?php echo $actor['actor'];
-            echo $actor['description']; ?>
+    ?>
 
+        <div class="actor_page_presentation">
+            <div class="img-actor">
+            <img src='<?php echo $actor['logo']; ?>' />
+            </div>
+            <h2><?php echo $actor['actor']; ?></h2><br />
+            <?php echo $actor['description']; ?><br />
+        </div>
+
+
+    <!-- Votes -->
+    <?php include_once('votes/vote.php') ; ?>
+
+    <!-- Commentaires -->
+    <?php include_once('comentary/comments.php') ; ?>
 
     <!-- Pied de page -->
- 
+
     <? include ('includes/footer.php'); ?>
-    
+
 </body>
 </html>

@@ -1,13 +1,4 @@
-<?php
-try
-{
-	$mysqlConnection = new PDO('mysql:host=localhost;dbname=oc_gbaf;charset=utf8', 'root', 'root');
-}
-catch (Exception $e)
-{
-        die('Erreur : ' . $e->getMessage());
-}
-?>
+<?php include_once ('../config/mysql.php'); ?>
 
 <?php
         
@@ -20,7 +11,7 @@ catch (Exception $e)
                 'prenom' => $_POST['fullname'],
                 'username' => $_POST['username'],
                 'password' => $_POST['password'],
-                'reponse' => $_POST['password'],
+                'reponse' => $_POST['reponse'],
 ])
 ?>
 
@@ -37,7 +28,7 @@ catch (Exception $e)
 <body>
 
 <h1>Vous vous êtes enregistré avec succès !</h1>
-<button type="submit" class="btn btn-primary"><a href="../index.php">Retour</a></button>
+<button type="submit" class="btn btn-primary"><a href="./index.php">Retour</a></button>
 
 </body>
 </html>
