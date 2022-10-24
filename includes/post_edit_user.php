@@ -16,7 +16,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,12 +27,13 @@
 
 <body>
 
-<h1>Vous avez modifier vos informations avec succès !</h1>
-<button type="submit" class="btn btn-primary"><a href="../index.php">Retour</a></button>
+<!--Tête de page -->
+<?php include_once ('./includes/header.php'); ?>
 
-
-
-
+<div class="youDiD">
+    <h1>Vous avez modifier vos informations avec succès !</h1>
+    <button type="submit" class="btn btn-primary"><a href="../index.php">Retour</a></button>
+</div>
 
 
 </body>

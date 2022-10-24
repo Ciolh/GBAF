@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +10,7 @@
 
 
      <!--Tête de page -->
-     <?php include_once ('includes/header.php'); ?>
+    <?php include_once('includes/header.php'); ?>
 
     <!-- Formulaire Ajout Form avec method Post -->
 <body>
@@ -23,11 +23,11 @@
 
         <!-- Formulaire de modification-->
         
-    <div class= "form-parametre">
+        <div class="form-setup">
 
     <h1>Modifiez vos informations</h1><br />
 
-        <form method="post" action ="includes/post_edit_user.php">
+    <form method="post" action="includes/post_edit_user.php">
 
             <!-- Champ cachés -->
             <input type="hidden" class="form-control" id="id" name="id" value="<?php echo $_GET['id']; ?>">
@@ -63,7 +63,7 @@
         </div>
     </div>
         <!-- Pied de page -->
-        <?php include_once ('includes/footer.php'); ?>
+        <?php include_once('includes/footer.php'); ?>
 
 </body>
 </html>

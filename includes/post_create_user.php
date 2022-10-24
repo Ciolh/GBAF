@@ -2,8 +2,6 @@
 
 <?php
         
-        echo($_POST['name']);
-
         $sqlQuery = 'INSERT INTO users(nom, prenom, username, password, reponse) VALUES (:nom, :prenom, :username, :password, :reponse)';
         $insertUsersStatement = $mysqlConnection->prepare($sqlQuery);
         $insertUsersStatement ->execute([
@@ -16,7 +14,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,8 +25,13 @@
 
 <body>
 
-<h1>Vous vous êtes enregistré avec succès !</h1>
-<button type="submit" class="btn btn-primary"><a href="./index.php">Retour</a></button>
+    <!--Tête de page -->
+    <?php include_once ('./includes/header.php'); ?>
+
+    <div class="youDid">
+    <h1>Vous vous êtes enregistré avec succès !</h1>
+    <button type="submit" class="btn btn-primary"><a href="./index.php">Retour</a></button>
+</div>
 
 </body>
 </html>

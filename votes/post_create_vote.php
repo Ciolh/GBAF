@@ -9,7 +9,7 @@
       $sqlQuery = 'SELECT * FROM vote WHERE id_actor=:id_actor AND id_user=:id_user';
       $voteQuery = $mysqlConnection->prepare($sqlQuery);
       $voteQuery ->execute([
-              'id_actor' =>  $_POST['id_acteur'],
+              'id_actor' => $_POST['id_actor'],
               'id_user' => $loggedUser['id_user'],
       ]);
 
@@ -20,7 +20,7 @@
           $insertVoteYesStatement = $mysqlConnection->prepare($sqlQuery);
           $insertVoteYesStatement ->execute([
                   'id_user' => $loggedUser['id_user'],
-                  'id_actor' => $_POST['id_acteur'],
+                  'id_actor' => $_POST['id_actor'],
                   'vote' => $_GET['vote'],
           ]);
       }
@@ -28,7 +28,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -39,17 +39,19 @@
 
 <body>
 
-  <?php if($userVoteCount > 0){ ?>
+    <div class="youDid">
+        <?php if($userVoteCount > 0){ ?>
 
-    <p>Vous avez déjà voté ! </p>
+            <h3>Vous avez déjà voté ! </h3>
+          
+        <?php } else { ?>
 
-  <?php } else { ?>
+            <h3>Votre vote a bien été enregistré !</h3>
 
-    <h1>Votre vote a bien été enregistré !</h1>
+        <?php } ?>
 
-  <?php } ?>
-
-  <button type="submit" class="btn btn-primary"><a href="../actor_page.php?id=<?php echo $_POST['id_acteur']; ?>">Retour</a></button>
+        <button type="submit" class="btn btn-primary"><a href="../actor_page.php?id=<?php echo $_POST['id_actor']; ?>">Retour</a></button>
+    </div>
 
 </body>
 </html>

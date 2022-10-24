@@ -1,8 +1,8 @@
 <header class="flex-container">
 
         <div class="image-logo">
-          <a href="./index.php">
-            <img src='images\Logo.png'>
+        <a href="./index.php">
+            <img src='./images/logo.png'>
           </a>
         </div>
         <div class="header-user">

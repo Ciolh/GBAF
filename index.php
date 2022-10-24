@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -32,7 +32,7 @@
         <div class="titre_presentation"><h1>Bienvenue sur le réseaux banquaire GBAF</h1></div>
 
         <div class="texte_présentation"><h3>Présentation GBAF</h3></div>
-            <p>Le Groupement Banque Assurance Français (GBAF) est une fédération représentant les 6 grands groupes français :<br/>
+        <p>Le Groupement Banque Assurance Français (GBAF) est une fédération représentant les 6 grands groupes français :<br/>
                 ● BNP Paribas<br/>
                 ● BPCE<br/>
                 ● Crédit Agricole <br/>
@@ -65,7 +65,7 @@
           ?>
               <div class="actor_presentation">
                 <div class="img-container">
-                  <img src='<?php echo $actor['logo'] ; ?>'>
+                  <img src='<?php echo $actor['logo']; ?>'>
                 </div>
                 <div class="description">
                   <h2><?php echo $actor['actor']; ?></h2>
@@ -100,7 +100,8 @@
           <input type="password" class="form-control" id="password" name="password">
       </div>
       <button type="submit" class="btn btn-primary">Se connecter</button>
-      <button type="submit" class="btn btn-primary"><a href=inscription.php>Créer un compte</a></button>
+      <button type="submit" class="btn btn-primary"><a href=inscription.php>Créer un compte</a></button><br />
+      <a href="verif_parametres.php">Mot de passe oublié</a>
 
   </form>
   <?php endif; ?>

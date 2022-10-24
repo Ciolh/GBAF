@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,11 +11,9 @@
 <body>
 
     <?php
-
     include_once ('./config/mysql.php');
     include_once ('./includes/functions.php');
     include_once ('./config/user.php');
-
     ?>
 
     <!--Tête de page -->
@@ -33,10 +31,6 @@
             <h2><?php echo $actor['actor']; ?></h2><br />
             <?php echo $actor['description']; ?><br />
         </div>
-
-
-    <!-- Votes -->
-    <?php include_once('votes/vote.php') ; ?>
 
     <!-- Commentaires -->
     <?php include_once('comentary/comments.php') ; ?>

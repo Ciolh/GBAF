@@ -22,30 +22,30 @@ $votes_negatifs = $voteQuery->rowCount();
 <!--Vote like -->
     <form method="post" action ="votes/post_create_vote.php?vote=1">
 
-    <div class="mb-3 visually-hidden">
+        <div class="mb-3 visually-hidden">
 
-        <input class="form-control" type="hidden" name="id_acteur" value="<?php echo $actor['id_actor']; ?>" />
+            <input class="form-control" type="hidden" name="id_actor" value="<?php echo $actor['id_actor']; ?>" />
 
-    </div>
+        </div>
 
-    <div class="vote-like">
-        <button type="submit" class="btn btn-primary">Like <?php echo $votes_positifs; ?></button>
-    </div>
+        <div class="vote-like">
+            <button type="submit" class="btn btn-primary">Like <?php echo $votes_positifs; ?></button>
+        </div>
 
     </form>
 
 <!--Vote dislike -->
     <form method="post" action ="votes/post_create_vote.php?vote=0">
 
-    <div class="mb-3 visually-hidden">
+        <div class="mb-3 visually-hidden">
 
-        <input class="form-control" type="hidden" name="id_acteur" value="<?php echo $actor['id_actor']; ?>" />
+            <input class="form-control" type="hidden" name="id_actor" value="<?php echo $actor['id_actor']; ?>" />
 
-    </div>
+        </div>
 
-    <div class="vote-dislike">
-        <button type="submit" class="btn btn-primary">Dislike <?php echo $votes_negatifs; ?></button>
-    </div>
+        <div class="vote-dislike">
+            <button type="submit" class="btn btn-primary">Dislike <?php echo $votes_negatifs; ?></button>
+        </div>
 
     </form>
 

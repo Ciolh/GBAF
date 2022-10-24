@@ -34,7 +34,7 @@ header{
 }
 
 .presentation{
-    background: #52c7c7;
+    background: #a3a3a3;
     text-align: center;
     padding: 40px;
     margin-bottom: 20px;
@@ -66,7 +66,7 @@ header{
 
 .actor_page_presentation {
     padding: 40px;
-    background: #cbcbcb;
+    background: #a3a3a3;
     text-align: center;
 }
 
@@ -111,28 +111,40 @@ footer{
 }
 
 .inscription {
-    background: teal;
+    background: rgb(88, 88, 88);
     text-align: center;
 
 }
 
 .comments-title {
     text-align: center;
+    display: flex;
+    justify-content: space-between;
 }
 
 .comments {
-    background:#e9e9e9;
-    text-align: center;
-    width: 20%;
+    background-color: rgb(88, 88, 88);
+    margin-top: 10px;
+    padding: 20px;
+    border: 2px black solid;
+}
+
+.comment {
+    background: #cbcbcb;
+    width: 100%;
     border: 2px black solid;
     border-right: 2px black solid;
     border-left: 2px black solid;
+    padding-left: 8px;
+    margin-top: 5px;
 }
 
 .comments_form {
-    background: grey;
+    background: #cbcbcb;
     text-align: center;
-    padding: 20px;
+    width: 100%;
+    padding-left: 10px;
+    padding-bottom: 10px;
 }
 
 
@@ -160,5 +172,52 @@ footer{
 
 .form-parametre button{
     margin-top: 20px;
+}
+
+.youDid {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+@media screen and (max-width: 1280px) {
+    
+    .actors_presentation{
+        padding: 40px;
+        max-width: auto;
+    }
+    
+    .actor_presentation img{
+        width: 200px;
+        max-width: 50%;
+        max-height: 25%;
+    }
+    
+    .actor_presentation{
+        margin: 40px 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .actor_page_presentation {
+        padding: 40px;
+        text-align: center;
+        max-width: auto;
+    }
+    
+    .actor_page_presentation img{
+        width: 250px;
+        padding-left: 15px;
+    }
+
+    .comments {
+        padding: 10px;
+        max-width: auto;
+    }
+
+    .comment {
+        margin-top: 5px;
+        padding-left: 3px;
+    }
 
 }

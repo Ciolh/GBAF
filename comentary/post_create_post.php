@@ -3,19 +3,31 @@
     include_once ('../includes/functions.php');
     include_once ('../config/user.php');
 
-    $sqlQuery = 'INSERT INTO post( id_user, id_acteur, date_add, post) VALUES ( :id_user, :id_acteur, :date_add, :post)';
-    $insertUsersStatement = $mysqlConnection->prepare($sqlQuery);
-    $insertUsersStatement ->execute([
+    $postData = $_POST;
+
+    $sqlQuery = 'SELECT * FROM post WHERE id_user= :id_user AND id_actor= :id_actor';
+    $postQuery = $mysqlConnection->prepare($sqlQuery);
+    $postQuery ->execute([
             'id_user' => $loggedUser['id_user'],
-            'id_acteur' => $_POST['id_acteur'],
-            'date_add' => date('d.m.y'),
-            'post' => $_POST['post'],
+            'id_actor' => $_POST['id_actor']
     ]);
 
+    $userPostCount = $postQuery->rowCount();
+    
+    if($userPostCount <= 1){
+    $sqlQuery = 'INSERT INTO post( id_user, id_actor, date_add, post) VALUES ( :id_user, :id_actor, :date_add, :post)';
+    $insertPost = $mysqlConnection->prepare($sqlQuery);
+    $insertPost ->execute([
+            'id_user' => $loggedUser['id_user'],
+            'id_actor' => $_POST['id_actor'],
+            'date_add' => date('Y.m.d'),
+            'post' => $_POST['post'],
+    ]);
+    }
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,8 +38,20 @@
 
 <body>
 
-<h1>Votre commentaire a bien été enregistré !</h1>
-<button type="submit" class="btn btn-primary"><a href="../actor_page.php?id=<?php echo $_POST['id_acteur']; ?>">Retour</a></button>
+<div class="youDid">
 
+    <?php if($userPostCount >= 1){ ?>
+
+            <h1>Vous avez déjà commenté cet acteur ! </h1>
+            <button type="submit" class="btn btn-primary"><a href="../actor_page.php?id=<?php echo $_POST['id_actor']; ?>">Retour</a></button>
+
+    <?php } else { ?>
+
+
+            <h1>Votre commentaire a bien été enregistré !</h1>
+            <button type="submit" class="btn btn-primary"><a href="../actor_page.php?id=<?php echo $_POST['id_actor']; ?>">Retour</a></button>
+
+    <?php } ?>
+</div>
 </body>
 </html>
